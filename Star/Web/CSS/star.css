@@ -1,0 +1,72 @@
+.gallery {
+  position: relative;
+}
+.gallery:hover .thumb {
+  opacity: .7;
+}
+.thumb {
+  height: 100px;
+  width: 12.5%;
+  background: no-repeat center center;
+  background-size: cover;
+  transition: opacity 600ms;  
+}
+.gallery .thumb:hover {
+  opacity: 1; /* overrides blur, so active img is not blurred */
+}
+.thumb:before, .thumb:after { 
+  opacity: 0; 
+  width: 45%;
+}
+.thumb:last-of-type:before, .thumb:last-of-type:after { opacity: 1; }
+.thumb:hover:before, .thumb:hover:after { 
+  z-index: 100; /* so this image stays on top */
+  opacity: 1;
+  transition: opacity 2000ms;
+}
+/* this is the full-size image  */
+.thumb:before { 
+  content: '';
+  position: absolute;
+  top: 0; left: 12.5%;
+  height: 100%;
+  padding-left: 20px; /* creates gap */
+  background: inherit;
+  background-position: 0px center; /* moves the image slightly right so there's a gap between thumbnails and full-size */
+}
+/* this is the caption */
+.thumb:after {
+  content: attr(data-caption);
+  position: absolute;
+  bottom: 0;
+  left: 15%;
+  height: 100%;
+  padding-bottom: .5em;
+  text-align: center;
+  font-size: 1.4rem;
+  font-style: italic;
+  color: #fff;
+}
+
+.button{
+    border:none;
+    margin-top: 3%;
+    padding:15px 20px;
+    border-radius:25px;
+    background:#6b4c4c;
+    color: #fff; 
+}
+
+/*
+* CSS below just sets src of each image
+* could also be applied inline with HTML if needed to be dynamic
+*/
+.thumb.pic1 {
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample4.jpg);
+}
+.thumb.pic2 {
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample5.jpg);
+}
+.thumb.pic3 {
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample6.jpg);
+}
